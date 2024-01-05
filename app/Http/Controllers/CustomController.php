@@ -10,7 +10,6 @@ class CustomController extends Controller
 {
     public function index()
     {
-
         $result = DB::table('equip')
             ->join('customer', 'customer.customerID', '=', 'equip.customerID')
             ->join('area', 'area.areaID', '=', 'equip.areaID')

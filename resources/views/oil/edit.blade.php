@@ -39,7 +39,27 @@
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{ asset('admin_assets/js/sb-admin-2.min.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{ asset('admin_assets/js/sb-admin-2.min.js') }}"></script>
+
 
 @endsection
+
+@php
+  function getPrefix($name) {
+    $prefixes = ['min', 'max', 'border', 'per', 'ket'];
+
+    foreach ($prefixes as $prefix) {
+      if (strpos($name, $prefix) === 0) {
+        return $prefix;
+      }
+    }
+
+    return $name;
+  }
+
+  function getLastWord($str) {
+    $words = explode(' ', $str);
+    return end($words);
+}
+@endphp

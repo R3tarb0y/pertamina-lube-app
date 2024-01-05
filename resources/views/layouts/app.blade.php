@@ -13,6 +13,7 @@
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('admin_assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
+
 </head>
 <body id="page-top">
   <!-- Page Wrapper -->
@@ -30,11 +31,11 @@
 
         <!-- Topbar -->
         @include('layouts.navbar')
+
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
@@ -51,7 +52,6 @@
 
       </div>
       <!-- End of Main Content -->
-
       <!-- Footer -->
       @include('layouts.footer')
       <!-- End of Footer -->
@@ -77,4 +77,8 @@
   <!-- Page level plugins -->
   <script src="{{ asset('admin_assets/vendor/chart.js/Chart.min.js') }}"></script>
 </body>
+<<<<<<< HEAD
+=======
+</body>
+>>>>>>> cc35d3ae7a7d2ee26f6412dc83c773b9ea51efd5
 </html>

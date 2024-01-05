@@ -52,7 +52,6 @@ class AuthController extends Controller
         }
 
         $request->session()->regenerate();
-
         return redirect()->route('oil.index');
     }
 
