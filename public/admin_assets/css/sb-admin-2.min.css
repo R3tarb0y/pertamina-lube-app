@@ -75,7 +75,7 @@
       background-position: 100% 0;
     }
   }
-  
+
   #animate-area {
     margin: 0px;
     padding: 0px;
@@ -87,6 +87,7 @@
     background-repeat: repeat-x;
     animation: animatedBackground 40s linear infinite;
   }
+
   /*------- for more tutorials visit www.twoclock.com*/
 
   svg {
@@ -98,7 +99,7 @@
     box-sizing: border-box;
     display: block;
     background-color: #0e4166;
-    background-image: linear-gradient(to bottom, rgba(3, 106, 144, 0.86), #115478);
+    background-image: linear-gradient(to bottom, rgba(203, 186, 0, 0.86), #6e5f00);
 }
   [tabindex="-1"]:focus:not(:focus-visible) {
     outline: 0 !important;
@@ -10347,4 +10348,3 @@
   body.sidebar-toggled footer.sticky-footer {
     width: 100%;
   }
-  

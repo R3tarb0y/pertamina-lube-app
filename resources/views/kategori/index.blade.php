@@ -76,6 +76,40 @@
         $('#modal-form [name=_method]').val('post');
         $('#modal-form [name=nama_kategori]').focus();
     }
+    function editForm(url) {
+        $('#modal-form').modal('show');
+        $('#modal-form .modal-title').text('Edit Kategori');
+
+        $('#modal-form form')[0].reset();
+        $('#modal-form form').attr('action', url);
+        $('#modal-form [name=_method]').val('put');
+        $('#modal-form [name=nama_kategori]').focus();
+
+        $.get(url)
+            .done((response) => {
+                $('#modal-form [name=nama_kategori]').val(response.nama_kategori);
+            })
+            .fail((errors) => {
+                alert('Tidak dapat menampilkan data');
+                return;
+            });
+    }
+
+    function deleteData(url) {
+        if (confirm('Yakin ingin menghapus data terpilih?')) {
+            $.post(url, {
+                    '_token': $('[name=csrf-token]').attr('content'),
+                    '_method': 'delete'
+                })
+                .done((response) => {
+                    table.ajax.reload();
+                })
+                .fail((errors) => {
+                    alert('Tidak dapat menghapus data');
+                    return;
+                });
+        }
+    }
 
 </script>
 @endpush

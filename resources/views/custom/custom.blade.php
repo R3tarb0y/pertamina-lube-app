@@ -1,13 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('title', '')
 
-@section('contents')
+@section('content')
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
@@ -27,7 +26,93 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <style>
+
         /* Tombol CSV dan PDF */
+    #exportSelected, #exportSelectedPdf {
+        background-color: black;
+        color: white;
+        border: none;
+    }
+
+    /* Efek hover */
+    #exportSelected:hover, #exportSelectedPdf:hover {
+        background-color: darkgoldenrod;
+        color: black;
+    }
+
+         .modal-lg {
+            max-width: 70%; /* Adjust the percentage as needed */
+        }
+        /* Add this CSS in your style.css or in a <style> block in the head section of your layout */
+
+            .navbar-menu {
+                list-style: none;
+                padding: 0;
+            }
+
+            .navbar-menu li {
+                display: inline;
+                margin-right: 20px;
+                position: relative; /* Required for the underline and shadow effects */
+            }
+
+            .navbar-menu a {
+                text-decoration: none;
+                color: goldenrod; /* Text color for non-active links */
+                position: relative; /* Required for the shadow effect */
+            }
+
+            /* Colored underline for active link */
+            .navbar-menu a.active {
+                border-bottom: 2px solid #ff5733; /* Colored underline for the active link */
+            }
+
+            /* Underline animation */
+            .navbar-menu a::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background: #ff5733; /* Color of the underline */
+                left: 0;
+                bottom: 0;
+                transform: scaleX(0);
+                transform-origin: right;
+                transition: transform 0.3s ease;
+            }
+
+            .navbar-menu a:hover::after {
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+
+            /* Shadow effect */
+            .navbar-menu a.active::before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 4px; /* Adjust the height for the shadow */
+                background: rgba(255, 87, 51, 0.5); /* Shadow color with transparency */
+                left: 0;
+                top: 100%; /* Position the shadow beneath the link */
+            }
+
+            /* Add a margin to separate the navbar from the content */
+            .navbar-menu {
+                margin-bottom: 20px;
+            }
+            #dataTable {
+            width: 100%;
+            border-collapse: collapse; /* Remove default table border-spacing */
+        }
+
+        #dataTable th,
+        #dataTable td {
+            border: 1px solid #dee2e6; /* Border color */
+            padding: 8px;
+        }
+
+        /* Button Styles */
         #exportSelected,
         #exportSelectedPdf {
             background-color: black;
@@ -35,67 +120,49 @@
             border: none;
         }
 
-        /* Efek hover */
         #exportSelected:hover,
         #exportSelectedPdf:hover {
             background-color: darkgoldenrod;
             color: black;
         }
 
-        .modal-lg {
-            max-width: 70%;
-            /* Adjust the percentage as needed */
-        }
-
-        .navbar-menu {
-            list-style: none;
-            padding: 0;
-        }
-
-        .navbar-menu li {
-            display: inline;
-            margin-right: 20px;
-            position: relative;
-            /* Required for the underline animation */
-        }
-
-        .navbar-menu a {
-            text-decoration: none;
-            color: goldenrod;
-            /* Text color for non-active links */
-        }
-
-        /* Colored underline for active link */
-        .navbar-menu a.active {
-            border-bottom: 2px solid #ff5733;
-            /* Colored underline for the active link */
-        }
-
-        /* Underline animation */
-        .navbar-menu a::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background: #ff5733;
-            /* Color of the underline */
-            left: 0;
-            bottom: 0;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s ease;
-        }
-
-        .navbar-menu a:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        /* Add a margin to separate the navbar from the content */
-        .navbar-menu {
+        /* Card Styles */
+        .card {
+            border: 1px solid #dee2e6; /* Border color */
+            border-radius: 5px;
             margin-bottom: 20px;
+            background-color: #fff; /* White background color */
         }
-    </style>
+
+        .card-body {
+            padding: 20px;
+        }
+        .modal {
+            overflow: auto; /* Allow scrolling if the content exceeds modal height */
+        }
+
+        .modal-dialog {
+            max-width: 80%;
+            margin: 1.75rem auto;
+        }
+
+        .modal-content {
+            border: 1px solid #dee2e6; /* Border color */
+            border-radius: 5px;
+            overflow: hidden; /* Hide overflow content */
+        }
+
+        .modal-header,
+        .modal-body,
+        .modal-footer {
+            padding: 15px;
+        }
+
+        .modal-footer #detailButton,
+        .modal-footer #editButton {
+            margin-left: 5px;
+        }
+     </style>
     </head>
 
     <body>

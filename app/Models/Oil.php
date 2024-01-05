@@ -199,8 +199,5 @@ class Oil extends Model
         'B ket',
     ];
 
-    public function condemning()
-    {
-        return $this->hasOne(Condemning::class, 'condemID', 'id');
-    }
+
 }
